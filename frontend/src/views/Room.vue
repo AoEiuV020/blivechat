@@ -268,6 +268,15 @@ export default {
         repeated: 1,
         translation: data.translation
       }
+
+      const text = `${data.authorName}说:${data.content}`
+
+      // 创建音频播放的 URL
+      const audioUrl = `https://dds.dui.ai/runtime/v1/synthesize?voiceId=kaolam_diantai&text=${encodeURIComponent(text)}&speed=1&volume=100&audioType=wav`
+
+      // 创建 Audio 对象并播放
+      const audio = new Audio(audioUrl)
+      audio.play()
       this.$refs.renderer.addMessage(message)
     },
     /** @param {chatModels.AddGiftMsg} data */
